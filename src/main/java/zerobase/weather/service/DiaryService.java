@@ -142,5 +142,10 @@ public class DiaryService {
     public List<Diary> readDiaries(LocalDate startDate, LocalDate endDate){
         return diaryRepository.findAllByDateBetween(startDate, endDate);
     }
-
+    @Transactional(isolation = Isolation.SERIALIZABLE)
+    public void updateDiary(LocalDate date, String text){
+        Diary nowDiary = diaryRepository.getFirstByDate(date);
+        nowDiary.setText(text);
+        diaryRepository.save(nowDiary);
+    }
 }
