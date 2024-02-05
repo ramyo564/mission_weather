@@ -32,5 +32,17 @@ public class DiaryController {
             LocalDate date) {
         return diaryService.readDiary(date);
     }
+    @GetMapping("/read/diaries")
+    List<Diary> readDiaies(
+            @RequestParam(value = "startDate")
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+            LocalDate startDate,
+            @RequestParam(value = "endDate")
+            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+            LocalDate endDate) {
+        return diaryService.readDiaries(startDate, endDate);
+    }
+
+
 
 }
