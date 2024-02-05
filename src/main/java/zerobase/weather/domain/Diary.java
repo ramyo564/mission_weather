@@ -10,9 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDate;
 
+@Entity
 @Getter
 @Setter
-@Entity
 @NoArgsConstructor
 public class Diary {
     @Id
@@ -24,7 +24,7 @@ public class Diary {
     private String text;
     private LocalDate date;
 
-    public void setDateWeather(DateWeather dateWeather){
+    public void setDateWeather(DateWeather dateWeather) {
         this.date = dateWeather.getDate();
         this.weather = dateWeather.getWeather();
         this.icon = dateWeather.getIcon();
